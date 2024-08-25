@@ -7,6 +7,7 @@ import ru.invest.display.dao.ShareRepository;
 import ru.invest.display.dao.UserRepository;
 import ru.invest.display.dto.ShareCreateDto;
 import ru.invest.display.dto.UserCreateDto;
+import ru.invest.display.entity.Share;
 import ru.invest.display.entity.User;
 import ru.invest.display.mapper.GeneralMapper;
 
@@ -15,40 +16,51 @@ import java.util.Optional;
 @Slf4j
 public class ShareService {
     private final ShareRepository shareRepository;
-    private final GeneralMapper<UserCreateDto, User> userCreateMapper;
+    private final GeneralMapper<ShareCreateDto, Share> shareCreateMapper;
 
-    public ShareService(@Autowired ShareRepository shareRepository, @Autowired GeneralMapper<ShareCreateDto, User> userCreateMapper) {
+    public ShareService(@Autowired ShareRepository shareRepository, @Autowired GeneralMapper<ShareCreateDto, Share> shareCreateMapper) {
         this.shareRepository = shareRepository;
-        this.userCreateMapper = userCreateMapper;
+        this.shareCreateMapper = shareCreateMapper;
     }
 
     @Transactional
-    public Long create(UserCreateDto userDto) {
+    public Long create(ShareCreateDto shareDto) {
         // validation
-        var userEntity = userCreateMapper.map(userDto);
+        var userEntity = shareCreateMapper.map(shareDto);
         return shareRepository.save(userEntity).getId();
     }
 
     @Transactional
-    public Optional<User> findById(Long id) {
+    public Optional<Share> findById(Long id) {
         return shareRepository.findById(id);
     }
 
     @Transactional
-    public <T> Optional<T> findById(Long id, GeneralMapper<User, T> userMapper) {
+    public <T> Optional<T> findById(Long id, GeneralMapper<Share, T> shareMapper) {
         return shareRepository.findById(id)
-                .map(userMapper::map);
+                .map(shareMapper::map);
     }
 
     @Transactional
-    public Optional<User> findByUsername(String username) {
-        return shareRepository.findByUsername(username);
+    public Optional<Share> findByName(String name) {
+        return shareRepository.findByName(name);
     }
 
     @Transactional
-    public <T> Optional<T> findByUsername(String username, GeneralMapper<User, T> userMapper) {
-        return shareRepository.findByUsername(username)
-                .map(userMapper::map);
+    public <T> Optional<T> findByName(String name, GeneralMapper<Share, T> shareMapper) {
+        return shareRepository.findByName(name)
+                .map(shareMapper::map);
+    }
+
+    @Transactional
+    public Optional<Share> findByCode(String code) {
+        return shareRepository.findByCode(code);
+    }
+
+    @Transactional
+    public <T> Optional<T> findByCode(String code, GeneralMapper<Share, T> shareMapper) {
+        return shareRepository.findByCode(code)
+                .map(shareMapper::map);
     }
 
     @Transactional

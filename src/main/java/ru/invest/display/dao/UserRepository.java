@@ -31,6 +31,5 @@ public class UserRepository extends BaseRepository<Long, User> {
         TypedQuery<User> query = getEntityManager().createQuery(cq);
 
         return query.getResultStream().findFirst();
-
     }
 }
