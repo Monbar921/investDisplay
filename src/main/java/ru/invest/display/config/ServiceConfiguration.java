@@ -11,6 +11,7 @@ import ru.invest.display.dao.UserRepository;
 import ru.invest.display.dto.ShareCreateDto;
 import ru.invest.display.dto.UserCreateDto;
 import ru.invest.display.dto.UserReadDto;
+import ru.invest.display.entity.Share;
 import ru.invest.display.entity.User;
 import ru.invest.display.interceptor.TransactionInterceptor;
 
@@ -40,7 +41,7 @@ public class ServiceConfiguration {
     @Bean
     public ShareService shareService(@Autowired TransactionInterceptor transactionInterceptor
             , @Autowired ShareRepository shareRepository
-            , @Autowired GeneralMapper<ShareCreateDto, User> shareCreateMapper) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+            , @Autowired GeneralMapper<ShareCreateDto, Share> shareCreateMapper) throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         return new ByteBuddy()
                 .subclass(ShareService.class)
                 .method(ElementMatchers.any())
