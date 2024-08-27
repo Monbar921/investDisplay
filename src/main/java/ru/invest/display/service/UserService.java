@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.invest.display.dao.UserRepository;
 import ru.invest.display.dto.UserCreateDto;
+import ru.invest.display.entity.BankAccount;
 import ru.invest.display.entity.User;
 import ru.invest.display.mapper.GeneralMapper;
 
@@ -26,6 +27,12 @@ public class UserService {
         var userEntity = userCreateMapper.map(userDto);
         return userRepository.save(userEntity).getId();
     }
+
+    @Transactional
+    public Optional<User> merge(User user) {
+        return userRepository.merge(user);
+    }
+
 
     @Transactional
     public Optional<User> findById(Long id) {
@@ -51,8 +58,8 @@ public class UserService {
 
     @Transactional
     public boolean delete(Long id) {
-        var maybeUser = userRepository.findById(id);
-        maybeUser.ifPresent(user -> userRepository.delete(user.getId()));
-        return maybeUser.isPresent();
+        var opEntity = userRepository.findById(id);
+        opEntity.ifPresent(entity -> userRepository.delete(entity.getId()));
+        return opEntity.isPresent();
     }
 }

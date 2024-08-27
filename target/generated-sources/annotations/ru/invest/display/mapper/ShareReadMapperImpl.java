@@ -7,7 +7,7 @@ import ru.invest.display.entity.Share;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-08-26T21:07:56+0700",
+    date = "2024-08-27T22:07:58+0700",
     comments = "version: 1.6.0, compiler: javac, environment: Java 17.0.12 (Ubuntu)"
 )
 @Component

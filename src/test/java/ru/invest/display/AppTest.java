@@ -9,13 +9,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import ru.invest.display.config.HibernateConfiguration;
 import ru.invest.display.dao.ShareRepository;
 import ru.invest.display.dao.UserRepository;
-import ru.invest.display.dto.UserCreateDto;
-import ru.invest.display.dto.UserReadDto;
+import ru.invest.display.dto.*;
+import ru.invest.display.entity.BankAccount;
 import ru.invest.display.entity.Share;
 import ru.invest.display.entity.User;
 import ru.invest.display.mapper.GeneralMapper;
+import ru.invest.display.service.BankAccountService;
+import ru.invest.display.service.ShareService;
 import ru.invest.display.service.UserService;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.Optional;
 //@RequiredArgsConstructor
 @SpringBootTest
@@ -23,22 +27,35 @@ import java.util.Optional;
 public class AppTest {
 //    private final ShareRepository shareRepository;
     private final UserService userService;
+    private final BankAccountService bankAccountService;
+    private final ShareService shareService;
 
-    private final GeneralMapper<User, UserReadDto> userReadMapper;
 
-
-    public AppTest(@Autowired UserService userService, @Autowired GeneralMapper<User, UserReadDto> userReadMapper) {
+    public AppTest(@Autowired UserService userService, @Autowired ShareService shareService,
+                   @Autowired BankAccountService bankAccountService) {
         this.userService = userService;
-        this.userReadMapper = userReadMapper;
+        this.bankAccountService = bankAccountService;
+        this.shareService = shareService;
     }
 
     @Test
     void testInsertShare() {
-        String username = "alae";
-//        User user;
-        log.info("START");
-        Optional<User> opUser = userService.findByUsername(username);
+        ShareCreateDto share = new ShareCreateDto(
+                new ProductCreateDto("Sber", 100, 1, "AlfaInvest")
+                ,new UserCreateDto("alae")
+                ,"SBRF"
+                ,"US"
+                ,"FINANCE"
+        );
 
+        shareService.create(share);
+    }
+
+    @Test
+    void testInsertBankAccount() {
+        String username = "alae";
+
+        Optional<User> opUser = userService.findByUsername(username);
 
         if(opUser.isEmpty()){
             UserCreateDto userCreateDto = new UserCreateDto(username);
@@ -52,20 +69,19 @@ public class AppTest {
 
             opUser = Optional.of(savedUser);
         }
-
-
-//        Share share = Share.builder()
-//                .name("Facebook")
+//
+//
+//        BankAccountCreateDto bankAccount = new BankAccountCreateDto(
+//                "Alfa account");
 //                .price(100)
 //                .quantity(1)
-//                .platform("AlfaInvest")
+//                .platform("Alfa")
 //                .user(opUser.get())
-//                .code("FCB")
-//                .country("US")
-//                .sector("IT")
+//                .interest(10)
+//                .startDate(LocalDate.of(2022, Month.DECEMBER, 30))
+//                .endDate(LocalDate.of(2023, Month.DECEMBER, 30))
 //                .build();
 //
-//        shareRepository.save(share);
-//        hibernateConfiguration.commitCurrentSession();
+//        bankAccountService.create(bankAccount);
     }
 }

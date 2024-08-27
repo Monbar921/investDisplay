@@ -19,16 +19,16 @@ public class BankAccountRepository extends BaseRepository<Long, BankAccount> {
         super(BankAccount.class, entityManager);
     }
 
-    public Optional<Share> findByName(String name) {
+    public Optional<BankAccount> findByName(String name) {
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
-        CriteriaQuery<Share> cq = cb.createQuery(Share.class);
-        Root<Share> root = cq.from(Share.class);
+        CriteriaQuery<BankAccount> cq = cb.createQuery(BankAccount.class);
+        Root<BankAccount> root = cq.from(BankAccount.class);
 
         Predicate[] predicates = new Predicate[1];
         predicates[0] = cb.equal(root.get("name"), name);
 
         cq.select(root).where(predicates);
-        TypedQuery<Share> query = getEntityManager().createQuery(cq);
+        TypedQuery<BankAccount> query = getEntityManager().createQuery(cq);
 
         return query.getResultStream().findFirst();
     }

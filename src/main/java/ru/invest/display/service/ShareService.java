@@ -17,17 +17,37 @@ import java.util.Optional;
 public class ShareService {
     private final ShareRepository shareRepository;
     private final GeneralMapper<ShareCreateDto, Share> shareCreateMapper;
+    private final UserService userService;
 
-    public ShareService(@Autowired ShareRepository shareRepository, @Autowired GeneralMapper<ShareCreateDto, Share> shareCreateMapper) {
+    public ShareService(@Autowired ShareRepository shareRepository, @Autowired UserService userService
+                        ,@Autowired GeneralMapper<ShareCreateDto, Share> shareCreateMapper) {
         this.shareRepository = shareRepository;
         this.shareCreateMapper = shareCreateMapper;
+        this.userService = userService;
     }
 
     @Transactional
     public Long create(ShareCreateDto shareDto) {
+        Long shareId = null;
         // validation
-        var userEntity = shareCreateMapper.map(shareDto);
-        return shareRepository.save(userEntity).getId();
+        var entity = shareCreateMapper.map(shareDto);
+
+        Optional<User> opUser = userService.findByUsername(entity.getUser().getUsername());
+
+        if (opUser.isPresent()){
+            entity.getUser().setId(opUser.get().getId());
+            opUser = userService.merge(entity.getUser());
+
+            if (opUser.isPresent()){
+                entity.setUser(opUser.get());
+
+                shareId = shareRepository.save(entity).getId();
+            }
+        }
+
+        log.info("user: id = {}, {}", entity.getUser().getId(), entity.getUser());
+
+        return shareId;
     }
 
     @Transactional
@@ -65,8 +85,8 @@ public class ShareService {
 
     @Transactional
     public boolean delete(Long id) {
-        var maybeUser = shareRepository.findById(id);
-        maybeUser.ifPresent(user -> shareRepository.delete(user.getId()));
-        return maybeUser.isPresent();
+        var opEntity = shareRepository.findById(id);
+        opEntity.ifPresent(entity -> shareRepository.delete(entity.getId()));
+        return opEntity.isPresent();
     }
 }

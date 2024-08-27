@@ -1,5 +1,6 @@
 package ru.invest.display.dto;
 
-public record ShareCreateDto (String name, double price, double quantity, String platform,
+public record ShareCreateDto (ProductCreateDto product,
+                              UserCreateDto user,
                               String code, String country, String sector){
 }
