@@ -25,7 +25,6 @@ import java.util.Optional;
 @SpringBootTest
 @Slf4j
 public class AppTest {
-//    private final ShareRepository shareRepository;
     private final UserService userService;
     private final BankAccountService bankAccountService;
     private final ShareService shareService;
@@ -41,8 +40,7 @@ public class AppTest {
     @Test
     void testInsertShare() {
         ShareCreateDto share = new ShareCreateDto(
-                new ProductCreateDto("Sber", 100, 1, "AlfaInvest")
-                ,new UserCreateDto("alae")
+                new ProductCreateDto("Sber", 100, 1, "AlfaInvest", new UserCreateDto("alae"))
                 ,"SBRF"
                 ,"US"
                 ,"FINANCE"

@@ -16,14 +16,11 @@ import java.time.LocalDate;
 @Data
 @SuperBuilder(toBuilder = true)
 @AllArgsConstructor
+@NoArgsConstructor
 @DiscriminatorValue(value = "bank_account")
 public class BankAccount extends Product<Long>{
     @Column(nullable = false)
     private double interest;
     private LocalDate startDate;
     private LocalDate endDate;
-
-    public BankAccount(){
-        super.setQuantity(1);
-    }
 }

@@ -2,6 +2,6 @@ package ru.invest.display.dto;
 
 import java.time.LocalDate;
 
-public record BankAccountCreateDto(String name, double price, double quantity, String platform,
+public record BankAccountCreateDto(ProductCreateDto productCreateDto,
                                    double interest, LocalDate startDate, LocalDate endDate){
 }

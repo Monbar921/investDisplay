@@ -2,6 +2,7 @@ package ru.invest.display.mapper;
 
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
+import ru.invest.display.dto.ProductCreateDto;
 import ru.invest.display.dto.ShareCreateDto;
 import ru.invest.display.dto.UserCreateDto;
 import ru.invest.display.entity.Share;
@@ -9,7 +10,7 @@ import ru.invest.display.entity.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-08-27T22:07:58+0700",
+    date = "2024-08-28T22:25:20+0700",
     comments = "version: 1.6.0, compiler: javac, environment: Java 17.0.12 (Ubuntu)"
 )
 @Component
@@ -23,7 +24,11 @@ public class ShareCreateMapperImpl implements ShareCreateMapper {
 
         Share.ShareBuilder<?, ?> share = Share.builder();
 
-        share.user( userCreateDtoToUser( source.user() ) );
+        share.user( productCreateDtoToUser( source.product() ) );
+        share.name( sourceProductName( source ) );
+        share.price( sourceProductPrice( source ) );
+        share.quantity( sourceProductQuantity( source ) );
+        share.platform( sourceProductPlatform( source ) );
         share.code( source.code() );
         share.country( source.country() );
         share.sector( source.sector() );
@@ -31,15 +36,55 @@ public class ShareCreateMapperImpl implements ShareCreateMapper {
         return share.build();
     }
 
-    protected User userCreateDtoToUser(UserCreateDto userCreateDto) {
-        if ( userCreateDto == null ) {
+    private String productCreateDtoUserUsername(ProductCreateDto productCreateDto) {
+        UserCreateDto user = productCreateDto.user();
+        if ( user == null ) {
+            return null;
+        }
+        return user.username();
+    }
+
+    protected User productCreateDtoToUser(ProductCreateDto productCreateDto) {
+        if ( productCreateDto == null ) {
             return null;
         }
 
         User.UserBuilder<?, ?> user = User.builder();
 
-        user.username( userCreateDto.username() );
+        user.username( productCreateDtoUserUsername( productCreateDto ) );
 
         return user.build();
+    }
+
+    private String sourceProductName(ShareCreateDto shareCreateDto) {
+        ProductCreateDto product = shareCreateDto.product();
+        if ( product == null ) {
+            return null;
+        }
+        return product.name();
+    }
+
+    private double sourceProductPrice(ShareCreateDto shareCreateDto) {
+        ProductCreateDto product = shareCreateDto.product();
+        if ( product == null ) {
+            return 0.0d;
+        }
+        return product.price();
+    }
+
+    private double sourceProductQuantity(ShareCreateDto shareCreateDto) {
+        ProductCreateDto product = shareCreateDto.product();
+        if ( product == null ) {
+            return 0.0d;
+        }
+        return product.quantity();
+    }
+
+    private String sourceProductPlatform(ShareCreateDto shareCreateDto) {
+        ProductCreateDto product = shareCreateDto.product();
+        if ( product == null ) {
+            return null;
+        }
+        return product.platform();
     }
 }
