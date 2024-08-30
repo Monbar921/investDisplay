@@ -1,5 +1,6 @@
 package ru.invest.display.mapper;
 
+import java.time.LocalDate;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 import ru.invest.display.dto.ProductCreateDto;
@@ -10,7 +11,7 @@ import ru.invest.display.entity.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-08-28T22:25:20+0700",
+    date = "2024-08-30T22:39:39+0700",
     comments = "version: 1.6.0, compiler: javac, environment: Java 17.0.12 (Ubuntu)"
 )
 @Component
@@ -28,10 +29,11 @@ public class ShareCreateMapperImpl implements ShareCreateMapper {
         share.name( sourceProductName( source ) );
         share.price( sourceProductPrice( source ) );
         share.quantity( sourceProductQuantity( source ) );
-        share.platform( sourceProductPlatform( source ) );
+        share.startDate( sourceProductStartDate( source ) );
         share.code( source.code() );
         share.country( source.country() );
         share.sector( source.sector() );
+        share.broker( source.broker() );
 
         return share.build();
     }
@@ -80,11 +82,11 @@ public class ShareCreateMapperImpl implements ShareCreateMapper {
         return product.quantity();
     }
 
-    private String sourceProductPlatform(ShareCreateDto shareCreateDto) {
+    private LocalDate sourceProductStartDate(ShareCreateDto shareCreateDto) {
         ProductCreateDto product = shareCreateDto.product();
         if ( product == null ) {
             return null;
         }
-        return product.platform();
+        return product.startDate();
     }
 }

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ru.invest.display.AppTest" time="2.166" tests="2" errors="1" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/denis/projects/InvestDisplay/target/test-classes:/home/denis/projects/InvestDisplay/target/classes:/home/denis/.m2/repository/org/springframework/boot/spring-boot-starter/3.3.2/spring-boot-starter-3.3.2.jar:/home/denis/.m2/repository/org/springframework/boot/spring-boot/3.3.2/spring-boot-3.3.2.jar:/home/denis/.m2/repository/org/springframework/spring-context/6.1.11/spring-context-6.1.11.jar:/home/denis/.m2/repository/org/springframework/spring-aop/6.1.11/spring-aop-6.1.11.jar:/home/denis/.m2/repository/org/springframework/spring-beans/6.1.11/spring-beans-6.1.11.jar:/home/denis/.m2/repository/org/springframework/spring-expression/6.1.11/spring-expression-6.1.11.jar:/home/denis/.m2/repository/io/micrometer/micrometer-observation/1.13.2/micrometer-observation-1.13.2.jar:/home/denis/.m2/repository/io/micrometer/micrometer-commons/1.13.2/micrometer-commons-1.13.2.jar:/home/denis/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.3.2/spring-boot-autoconfigure-3.3.2.jar:/home/denis/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.3.2/spring-boot-starter-logging-3.3.2.jar:/home/denis/.m2/repository/ch/qos/logback/logback-classic/1.5.6/logback-classic-1.5.6.jar:/home/denis/.m2/repository/ch/qos/logback/logback-core/1.5.6/logback-core-1.5.6.jar:/home/denis/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.23.1/log4j-to-slf4j-2.23.1.jar:/home/denis/.m2/repository/org/slf4j/jul-to-slf4j/2.0.13/jul-to-slf4j-2.0.13.jar:/home/denis/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/home/denis/.m2/repository/org/springframework/spring-core/6.1.11/spring-core-6.1.11.jar:/home/denis/.m2/repository/org/springframework/spring-jcl/6.1.11/spring-jcl-6.1.11.jar:/home/denis/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/home/denis/.m2/repository/org/postgresql/postgresql/42.7.3/postgresql-42.7.3.jar:/home/denis/.m2/repository/org/checkerframework/checker-qual/3.42.0/checker-qual-3.42.0.jar:/home/denis/.m2/repository/org/hibernate/orm/hibernate-core/6.6.0.Final/hibernate-core-6.6.0.Final.jar:/home/denis/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/home/denis/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/denis/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/home/denis/.m2/repository/org/hibernate/common/hibernate-commons-annotations/7.0.1.Final/hibernate-commons-annotations-7.0.1.Final.jar:/home/denis/.m2/repository/io/smallrye/jandex/3.2.0/jandex-3.2.0.jar:/home/denis/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/home/denis/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/home/denis/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/home/denis/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar:/home/denis/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/home/denis/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/home/denis/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar:/home/denis/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/home/denis/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/denis/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/home/denis/.m2/repository/org/mapstruct/mapstruct/1.6.0/mapstruct-1.6.0.jar:/home/denis/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar:/home/denis/.m2/repository/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.jar:/home/denis/.m2/repository/org/apache/logging/log4j/log4j-slf4j-impl/2.23.1/log4j-slf4j-impl-2.23.1.jar:/home/denis/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar:/home/denis/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/home/denis/.m2/repository/org/apache/logging/log4j/log4j-core/2.23.1/log4j-core-2.23.1.jar:/home/denis/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.3.2/spring-boot-starter-test-3.3.2.jar:/home/denis/.m2/repository/org/springframework/boot/spring-boot-test/3.3.2/spring-boot-test-3.3.2.jar:/home/denis/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.3.2/spring-boot-test-autoconfigure-3.3.2.jar:/home/denis/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/home/denis/.m2/repository/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar:/home/denis/.m2/repository/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar:/home/denis/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/home/denis/.m2/repository/org/assertj/assertj-core/3.25.3/assertj-core-3.25.3.jar:/home/denis/.m2/repository/org/awaitility/awaitility/4.2.1/awaitility-4.2.1.jar:/home/denis/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/home/denis/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.3/junit-jupiter-5.10.3.jar:/home/denis/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.3/junit-jupiter-api-5.10.3.jar:/home/denis/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/denis/.m2/repository/org/junit/platform/junit-platform-commons/1.10.3/junit-platform-commons-1.10.3.jar:/home/denis/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/denis/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.3/junit-jupiter-params-5.10.3.jar:/home/denis/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.3/junit-jupiter-engine-5.10.3.jar:/home/denis/.m2/repository/org/junit/platform/junit-platform-engine/1.10.3/junit-platform-engine-1.10.3.jar:/home/denis/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar:/home/denis/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.18/byte-buddy-agent-1.14.18.jar:/home/denis/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/denis/.m2/repository/org/mockito/mockito-junit-jupiter/5.11.0/mockito-junit-jupiter-5.11.0.jar:/home/denis/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/home/denis/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/denis/.m2/repository/org/springframework/spring-test/6.1.11/spring-test-6.1.11.jar:/home/denis/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:"/>
+    <property name="java.vm.vendor" value="Ubuntu"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://ubuntu.com/"/>
+    <property name="user.timezone" value="Asia/Novosibirsk"/>
+    <property name="org.jboss.logging.provider" value="slf4j"/>
+    <property name="os.name" value="Linux"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-17-openjdk-amd64/lib"/>
+    <property name="sun.java.command" value="/home/denis/projects/InvestDisplay/target/surefire/surefirebooter-20240830223736194_3.jar /home/denis/projects/InvestDisplay/target/surefire 2024-08-30T22-37-34_079-jvmRun1 surefire-20240830223736194_1tmp surefire_0-20240830223736194_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/home/denis/projects/InvestDisplay/target/test-classes:/home/denis/projects/InvestDisplay/target/classes:/home/denis/.m2/repository/org/springframework/boot/spring-boot-starter/3.3.2/spring-boot-starter-3.3.2.jar:/home/denis/.m2/repository/org/springframework/boot/spring-boot/3.3.2/spring-boot-3.3.2.jar:/home/denis/.m2/repository/org/springframework/spring-context/6.1.11/spring-context-6.1.11.jar:/home/denis/.m2/repository/org/springframework/spring-aop/6.1.11/spring-aop-6.1.11.jar:/home/denis/.m2/repository/org/springframework/spring-beans/6.1.11/spring-beans-6.1.11.jar:/home/denis/.m2/repository/org/springframework/spring-expression/6.1.11/spring-expression-6.1.11.jar:/home/denis/.m2/repository/io/micrometer/micrometer-observation/1.13.2/micrometer-observation-1.13.2.jar:/home/denis/.m2/repository/io/micrometer/micrometer-commons/1.13.2/micrometer-commons-1.13.2.jar:/home/denis/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/3.3.2/spring-boot-autoconfigure-3.3.2.jar:/home/denis/.m2/repository/org/springframework/boot/spring-boot-starter-logging/3.3.2/spring-boot-starter-logging-3.3.2.jar:/home/denis/.m2/repository/ch/qos/logback/logback-classic/1.5.6/logback-classic-1.5.6.jar:/home/denis/.m2/repository/ch/qos/logback/logback-core/1.5.6/logback-core-1.5.6.jar:/home/denis/.m2/repository/org/apache/logging/log4j/log4j-to-slf4j/2.23.1/log4j-to-slf4j-2.23.1.jar:/home/denis/.m2/repository/org/slf4j/jul-to-slf4j/2.0.13/jul-to-slf4j-2.0.13.jar:/home/denis/.m2/repository/jakarta/annotation/jakarta.annotation-api/2.1.1/jakarta.annotation-api-2.1.1.jar:/home/denis/.m2/repository/org/springframework/spring-core/6.1.11/spring-core-6.1.11.jar:/home/denis/.m2/repository/org/springframework/spring-jcl/6.1.11/spring-jcl-6.1.11.jar:/home/denis/.m2/repository/org/yaml/snakeyaml/2.2/snakeyaml-2.2.jar:/home/denis/.m2/repository/org/postgresql/postgresql/42.7.3/postgresql-42.7.3.jar:/home/denis/.m2/repository/org/checkerframework/checker-qual/3.42.0/checker-qual-3.42.0.jar:/home/denis/.m2/repository/org/hibernate/orm/hibernate-core/6.6.0.Final/hibernate-core-6.6.0.Final.jar:/home/denis/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar:/home/denis/.m2/repository/jakarta/transaction/jakarta.transaction-api/2.0.1/jakarta.transaction-api-2.0.1.jar:/home/denis/.m2/repository/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar:/home/denis/.m2/repository/org/hibernate/common/hibernate-commons-annotations/7.0.1.Final/hibernate-commons-annotations-7.0.1.Final.jar:/home/denis/.m2/repository/io/smallrye/jandex/3.2.0/jandex-3.2.0.jar:/home/denis/.m2/repository/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar:/home/denis/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/home/denis/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/home/denis/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar:/home/denis/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/home/denis/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/home/denis/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar:/home/denis/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/home/denis/.m2/repository/jakarta/inject/jakarta.inject-api/2.0.1/jakarta.inject-api-2.0.1.jar:/home/denis/.m2/repository/org/antlr/antlr4-runtime/4.13.0/antlr4-runtime-4.13.0.jar:/home/denis/.m2/repository/org/mapstruct/mapstruct/1.6.0/mapstruct-1.6.0.jar:/home/denis/.m2/repository/org/projectlombok/lombok/1.18.34/lombok-1.18.34.jar:/home/denis/.m2/repository/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.jar:/home/denis/.m2/repository/org/apache/logging/log4j/log4j-slf4j-impl/2.23.1/log4j-slf4j-impl-2.23.1.jar:/home/denis/.m2/repository/org/apache/logging/log4j/log4j-api/2.23.1/log4j-api-2.23.1.jar:/home/denis/.m2/repository/org/slf4j/slf4j-api/2.0.13/slf4j-api-2.0.13.jar:/home/denis/.m2/repository/org/apache/logging/log4j/log4j-core/2.23.1/log4j-core-2.23.1.jar:/home/denis/.m2/repository/org/springframework/boot/spring-boot-starter-test/3.3.2/spring-boot-starter-test-3.3.2.jar:/home/denis/.m2/repository/org/springframework/boot/spring-boot-test/3.3.2/spring-boot-test-3.3.2.jar:/home/denis/.m2/repository/org/springframework/boot/spring-boot-test-autoconfigure/3.3.2/spring-boot-test-autoconfigure-3.3.2.jar:/home/denis/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/home/denis/.m2/repository/net/minidev/json-smart/2.5.1/json-smart-2.5.1.jar:/home/denis/.m2/repository/net/minidev/accessors-smart/2.5.1/accessors-smart-2.5.1.jar:/home/denis/.m2/repository/org/ow2/asm/asm/9.6/asm-9.6.jar:/home/denis/.m2/repository/org/assertj/assertj-core/3.25.3/assertj-core-3.25.3.jar:/home/denis/.m2/repository/org/awaitility/awaitility/4.2.1/awaitility-4.2.1.jar:/home/denis/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/home/denis/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.3/junit-jupiter-5.10.3.jar:/home/denis/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.3/junit-jupiter-api-5.10.3.jar:/home/denis/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/denis/.m2/repository/org/junit/platform/junit-platform-commons/1.10.3/junit-platform-commons-1.10.3.jar:/home/denis/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/denis/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.10.3/junit-jupiter-params-5.10.3.jar:/home/denis/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.3/junit-jupiter-engine-5.10.3.jar:/home/denis/.m2/repository/org/junit/platform/junit-platform-engine/1.10.3/junit-platform-engine-1.10.3.jar:/home/denis/.m2/repository/org/mockito/mockito-core/5.11.0/mockito-core-5.11.0.jar:/home/denis/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.18/byte-buddy-agent-1.14.18.jar:/home/denis/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/denis/.m2/repository/org/mockito/mockito-junit-jupiter/5.11.0/mockito-junit-jupiter-5.11.0.jar:/home/denis/.m2/repository/org/skyscreamer/jsonassert/1.5.3/jsonassert-1.5.3.jar:/home/denis/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/denis/.m2/repository/org/springframework/spring-test/6.1.11/spring-test-6.1.11.jar:/home/denis/.m2/repository/org/xmlunit/xmlunit-core/2.9.1/xmlunit-core-2.9.1.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/denis"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-07-16"/>
+    <property name="java.home" value="/usr/lib/jvm/java-17-openjdk-amd64"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/home/denis/projects/InvestDisplay"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="FILE_LOG_CHARSET" value="UTF-8"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="surefire.real.class.path" value="/home/denis/projects/InvestDisplay/target/surefire/surefirebooter-20240830223736194_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.12+7-Ubuntu-1ubuntu220.04"/>
+    <property name="user.name" value="denis"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="5.15.153.1-microsoft-standard-WSL2"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="maven.ext.class.path" value="/mnt/c/Program Files/JetBrains/IntelliJ IDEA 2023.1/plugins/maven/lib/maven-event-listener.jar"/>
+    <property name="localRepository" value="/home/denis/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bugs.launchpad.net/ubuntu/+source/openjdk-17"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="17.0.12"/>
+    <property name="user.dir" value="/home/denis/projects/InvestDisplay"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="162371"/>
+    <property name="CONSOLE_LOG_CHARSET" value="UTF-8"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Ubuntu"/>
+    <property name="java.vm.version" value="17.0.12+7-Ubuntu-1ubuntu220.04"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="testInsertShare" classname="ru.invest.display.AppTest" time="0.378">
+    <error type="java.lang.reflect.UndeclaredThrowableException"><![CDATA[java.lang.reflect.UndeclaredThrowableException
+	at jdk.proxy2/jdk.proxy2.$Proxy44.persist(Unknown Source)
+	at ru.invest.display.dao.BaseRepository.save(BaseRepository.java:33)
+	at ru.invest.display.service.ShareService.create(ShareService.java:44)
+	at ru.invest.display.service.ShareService$ByteBuddy$kSJVo7rX.create$accessor$5Da6KxTP(Unknown Source)
+	at ru.invest.display.service.ShareService$ByteBuddy$kSJVo7rX$auxiliary$fPx4AuzA.call(Unknown Source)
+	at ru.invest.display.interceptor.TransactionInterceptor.intercept(TransactionInterceptor.java:46)
+	at ru.invest.display.service.ShareService$ByteBuddy$kSJVo7rX.create(Unknown Source)
+	at ru.invest.display.AppTest.testInsertShare(AppTest.java:52)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at ru.invest.display.config.HibernateConfiguration.lambda$getProxySession$0(HibernateConfiguration.java:68)
+	... 11 more
+Caused by: org.hibernate.exception.SQLGrammarException: could not execute statement [ERROR: column "user_id" of relation "product" does not exist
+  Position: 53] [insert into product (name,price,quantity,start_date,user_id,type) values (?,?,?,?,?,'share') returning id]
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:91)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.execute(ResultSetReturnImpl.java:145)
+	at org.hibernate.id.insert.InsertReturningDelegate.executeAndExtractReturning(InsertReturningDelegate.java:96)
+	at org.hibernate.id.insert.AbstractReturningDelegate.performMutation(AbstractReturningDelegate.java:58)
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorStandard.performNonBatchedOperations(MutationExecutorStandard.java:233)
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132)
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95)
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85)
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:682)
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:293)
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:274)
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:324)
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:393)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:307)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:223)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:136)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:177)
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:95)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:79)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:55)
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:761)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:745)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.hibernate.context.internal.ThreadLocalSessionContext$TransactionProtectionWrapper.invoke(ThreadLocalSessionContext.java:343)
+	at jdk.proxy2/jdk.proxy2.$Proxy133.persist(Unknown Source)
+	... 16 more
+Caused by: org.postgresql.util.PSQLException: ERROR: column "user_id" of relation "product" does not exist
+  Position: 53
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2725)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2412)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:371)
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:502)
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:419)
+	at org.postgresql.jdbc.PgPreparedStatement.executeWithFlags(PgPreparedStatement.java:194)
+	at org.postgresql.jdbc.PgPreparedStatement.execute(PgPreparedStatement.java:180)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.execute(ResultSetReturnImpl.java:129)
+	... 45 more
+]]></error>
+    <system-out><![CDATA[22:37:36.688 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [ru.invest.display.AppTest]: AppTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:37:36.738 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration ru.invest.display.App for test class ru.invest.display.AppTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.2)
+
+2024-08-30T22:37:36.918+07:00  INFO 162371 --- [           main] ru.invest.display.AppTest                : Starting AppTest using Java 17.0.12 with PID 162371 (started by denis in /home/denis/projects/InvestDisplay)
+2024-08-30T22:37:36.919+07:00  INFO 162371 --- [           main] ru.invest.display.AppTest                : No active profile set, falling back to 1 default profile: "default"
+2024-08-30T22:37:37.254+07:00  INFO 162371 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.0.Final
+2024-08-30T22:37:37.393+07:00  INFO 162371 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-08-30T22:37:37.444+07:00  WARN 162371 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001002: Using built-in connection pool (not intended for production use)
+2024-08-30T22:37:37.638+07:00  WARN 162371 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-30T22:37:37.649+07:00  INFO 162371 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/postgres]
+	Database driver: org.postgresql.Driver
+	Database version: 14.11
+	Autocommit mode: false
+	Isolation level: undefined/unknown
+	Minimum pool size: 1
+	Maximum pool size: 20
+2024-08-30T22:37:38.365+07:00  INFO 162371 --- [           main] ru.invest.display.AppTest                : Started AppTest in 1.572 seconds (process running for 2.125)
+found Transactional
+tr transaction org.hibernate.engine.transaction.internal.TransactionImpl@792eeae6
+tr alive false
+Transactional alive
+found Transactional
+tr transaction org.hibernate.engine.transaction.internal.TransactionImpl@792eeae6
+tr alive true
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+found Transactional
+tr transaction org.hibernate.engine.transaction.internal.TransactionImpl@792eeae6
+tr alive true
+Hibernate: 
+    insert 
+    into
+        product
+        (name, price, quantity, start_date, user_id, type) 
+    values
+        (?, ?, ?, ?, ?, 'share') 
+    returning id
+2024-08-30T22:37:38.741+07:00  WARN 162371 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 42703
+2024-08-30T22:37:38.742+07:00 ERROR 162371 --- [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: column "user_id" of relation "product" does not exist
+  Position: 53
+]]></system-out>
+  </testcase>
+  <testcase name="testInsertBankAccount" classname="ru.invest.display.AppTest" time="0.009">
+    <system-out><![CDATA[found Transactional
+tr transaction org.hibernate.engine.transaction.internal.TransactionImpl@2748bd6c
+tr alive false
+Transactional alive
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+]]></system-out>
+  </testcase>
+</testsuite>

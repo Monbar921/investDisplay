@@ -21,6 +21,7 @@ import java.time.LocalDate;
 public class BankAccount extends Product<Long>{
     @Column(nullable = false)
     private double interest;
-    private LocalDate startDate;
     private LocalDate endDate;
+    @Column(nullable = false)
+    private String bank;
 }

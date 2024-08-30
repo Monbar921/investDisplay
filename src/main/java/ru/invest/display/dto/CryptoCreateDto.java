@@ -1,9 +1,7 @@
 package ru.invest.display.dto;
-public record ShareCreateDto(
+public record CryptoCreateDto(
         ProductCreateDto product,
         String code,
-        String country,
-        String sector,
         String broker
 ) {
 

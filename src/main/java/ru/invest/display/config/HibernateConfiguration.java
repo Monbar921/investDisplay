@@ -15,6 +15,7 @@ import org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy;
 import org.hibernate.cfg.Configuration;
 import org.springframework.context.annotation.Bean;
 import ru.invest.display.dao.UserRepository;
+import ru.invest.display.entity.BankAccount;
 import ru.invest.display.entity.Product;
 import ru.invest.display.entity.Share;
 import ru.invest.display.entity.User;
@@ -51,6 +52,7 @@ public class HibernateConfiguration {
         configuration.addAnnotatedClass(Share.class);
         configuration.addAnnotatedClass(Product.class);
         configuration.addAnnotatedClass(User.class);
+        configuration.addAnnotatedClass(BankAccount.class);
 
         return configuration;
     }

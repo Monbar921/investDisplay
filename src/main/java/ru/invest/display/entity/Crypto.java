@@ -1,6 +1,8 @@
 package ru.invest.display.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,14 +15,10 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@DiscriminatorValue(value = "share")
-public class Share extends Product<Long>{
+@DiscriminatorValue(value = "crypto")
+public class Crypto extends Product<Long>{
     @Column(nullable = false)
     private String code;
-    @Column(nullable = false)
-    private String country;
-    @Column(nullable = false)
-    private String sector;
     @Column(nullable = false)
     private String broker;
 }

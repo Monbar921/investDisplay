@@ -7,7 +7,7 @@ import ru.invest.display.entity.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-08-28T22:04:37+0700",
+    date = "2024-08-30T22:36:37+0700",
     comments = "version: 1.6.0, compiler: javac, environment: Java 17.0.12 (Ubuntu)"
 )
 @Component
@@ -19,11 +19,9 @@ public class UserReadMapperImpl implements UserReadMapper {
             return null;
         }
 
-        String username = null;
+        UserReadDto userReadDto = new UserReadDto();
 
-        username = source.getUsername();
-
-        UserReadDto userReadDto = new UserReadDto( username );
+        userReadDto.setUsername( source.getUsername() );
 
         return userReadDto;
     }

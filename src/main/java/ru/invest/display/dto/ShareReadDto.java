@@ -5,11 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-public record ShareReadDto(
-        ProductReadDto product,
-        String code,
-        String country,
-        String sector
-) {
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ShareReadDto {
+    private ProductReadDto product;
+    private String code;
+    private String country;
+    private String sector;
+    private String broker;
 }

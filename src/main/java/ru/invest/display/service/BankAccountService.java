@@ -9,6 +9,7 @@ import ru.invest.display.dto.BankAccountCreateDto;
 import ru.invest.display.dto.ShareCreateDto;
 import ru.invest.display.entity.BankAccount;
 import ru.invest.display.entity.Share;
+import ru.invest.display.entity.User;
 import ru.invest.display.mapper.GeneralMapper;
 
 import java.util.Optional;
@@ -29,9 +30,24 @@ public class BankAccountService {
 
     @Transactional
     public Long create(BankAccountCreateDto accountCreateDto) {
+        Long shareId = null;
         // validation
         var entity = accountCreateMapper.map(accountCreateDto);
-        return bankAccountRepository.save(entity).getId();
+
+        Optional<User> opUser = userService.findByUsername(entity.getUser().getUsername());
+
+        if (opUser.isPresent()){
+            entity.getUser().setId(opUser.get().getId());
+            opUser = userService.merge(entity.getUser());
+
+            if (opUser.isPresent()){
+                entity.setUser(opUser.get());
+
+                shareId = bankAccountRepository.save(entity).getId();
+            }
+        }
+
+        return shareId;
     }
 
     @Transactional

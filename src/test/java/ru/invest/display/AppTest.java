@@ -39,11 +39,14 @@ public class AppTest {
 
     @Test
     void testInsertShare() {
+        LocalDate start = LocalDate.now();
+
         ShareCreateDto share = new ShareCreateDto(
-                new ProductCreateDto("Sber", 100, 1, "AlfaInvest", new UserCreateDto("alae"))
+                new ProductCreateDto("Sber", 100, 1, start, new UserCreateDto("alae"))
                 ,"SBRF"
                 ,"US"
-                ,"FINANCE"
+                ,"FINANCE",
+                "Alfa"
         );
 
         shareService.create(share);
@@ -51,35 +54,15 @@ public class AppTest {
 
     @Test
     void testInsertBankAccount() {
-        String username = "alae";
+        LocalDate start = LocalDate.now();
 
-        Optional<User> opUser = userService.findByUsername(username);
+        BankAccountCreateDto accountCreateDto = new BankAccountCreateDto(
+                new ProductCreateDto("Sber", 100, 1, start, new UserCreateDto("alae"))
+                , 10
+                , start
+                ,"Alfa"
+        );
 
-        if(opUser.isEmpty()){
-            UserCreateDto userCreateDto = new UserCreateDto(username);
-            Long id = userService.create(userCreateDto);
-
-            User savedUser = User
-                    .builder()
-                    .id(id)
-                    .username(username)
-                    .build();
-
-            opUser = Optional.of(savedUser);
-        }
-//
-//
-//        BankAccountCreateDto bankAccount = new BankAccountCreateDto(
-//                "Alfa account");
-//                .price(100)
-//                .quantity(1)
-//                .platform("Alfa")
-//                .user(opUser.get())
-//                .interest(10)
-//                .startDate(LocalDate.of(2022, Month.DECEMBER, 30))
-//                .endDate(LocalDate.of(2023, Month.DECEMBER, 30))
-//                .build();
-//
-//        bankAccountService.create(bankAccount);
+        bankAccountService.create(accountCreateDto);
     }
 }

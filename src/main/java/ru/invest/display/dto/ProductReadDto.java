@@ -1,4 +1,18 @@
 package ru.invest.display.dto;
 
-public record ProductReadDto(String name, double price, double quantity, String platform, UserReadDto user) {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ProductReadDto {
+    private String name;
+    private double price;
+    private double quantity;
+    private LocalDate startDate;
+    private UserReadDto user;
 }

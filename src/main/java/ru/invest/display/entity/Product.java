@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -22,7 +23,7 @@ public class Product<T extends Serializable> extends BaseEntity<T> {
     @Column(nullable = false)
     private double quantity;
     @Column(nullable = false)
-    private String platform;
+    private LocalDate startDate;
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
