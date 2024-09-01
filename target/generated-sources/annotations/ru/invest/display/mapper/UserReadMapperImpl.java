@@ -7,7 +7,7 @@ import ru.invest.display.entity.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-08-30T22:36:37+0700",
+    date = "2024-08-31T17:24:40+0700",
     comments = "version: 1.6.0, compiler: javac, environment: Java 17.0.12 (Ubuntu)"
 )
 @Component

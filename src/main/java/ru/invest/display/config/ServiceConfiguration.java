@@ -7,19 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import ru.invest.display.dao.BankAccountRepository;
+import ru.invest.display.dao.CryptoRepository;
 import ru.invest.display.dao.ShareRepository;
 import ru.invest.display.dao.UserRepository;
-import ru.invest.display.dto.BankAccountCreateDto;
-import ru.invest.display.dto.ShareCreateDto;
-import ru.invest.display.dto.UserCreateDto;
-import ru.invest.display.dto.UserReadDto;
+import ru.invest.display.dto.*;
 import ru.invest.display.entity.BankAccount;
+import ru.invest.display.entity.Crypto;
 import ru.invest.display.entity.Share;
 import ru.invest.display.entity.User;
 import ru.invest.display.interceptor.TransactionInterceptor;
 
 import ru.invest.display.mapper.GeneralMapper;
 import ru.invest.display.service.BankAccountService;
+import ru.invest.display.service.CryptoService;
 import ru.invest.display.service.ShareService;
 import ru.invest.display.service.UserService;
 
@@ -58,6 +58,24 @@ public class ServiceConfiguration {
                 .getDeclaredConstructor(ShareRepository.class, UserService.class, GeneralMapper.class)
                 .newInstance(repository, userService, mapper);
     }
+
+    @Bean
+    public CryptoService cryptoService(@Autowired TransactionInterceptor transactionInterceptor
+            , @Autowired CryptoRepository repository
+            , @Autowired UserService userService
+            , @Autowired GeneralMapper<CryptoCreateDto, Crypto> mapper)
+            throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        return new ByteBuddy()
+                .subclass(CryptoService.class)
+                .method(ElementMatchers.any())
+                .intercept(MethodDelegation.to(transactionInterceptor))
+                .make()
+                .load(CryptoService.class.getClassLoader())
+                .getLoaded()
+                .getDeclaredConstructor(CryptoRepository.class, UserService.class, GeneralMapper.class)
+                .newInstance(repository, userService, mapper);
+    }
+
 
     @Bean
     public BankAccountService bankAccountService(@Autowired TransactionInterceptor transactionInterceptor

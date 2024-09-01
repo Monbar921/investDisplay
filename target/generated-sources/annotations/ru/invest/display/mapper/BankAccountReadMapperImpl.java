@@ -10,7 +10,7 @@ import ru.invest.display.entity.User;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-08-30T22:51:43+0700",
+    date = "2024-08-31T17:24:40+0700",
     comments = "version: 1.6.0, compiler: javac, environment: Java 17.0.12 (Ubuntu)"
 )
 @Component
@@ -35,7 +35,6 @@ public class BankAccountReadMapperImpl implements BankAccountReadMapper {
         }
         bankAccountToProductReadDto( source, bankAccountReadDto.getProduct() );
         bankAccountReadDto.setInterest( source.getInterest() );
-        bankAccountReadDto.setStartDate( source.getStartDate() );
         bankAccountReadDto.setEndDate( source.getEndDate() );
         bankAccountReadDto.setBank( source.getBank() );
 

@@ -1,7 +1,5 @@
 package ru.invest.display.dao;
 
-
-import jakarta.persistence.Column;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -15,13 +13,12 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
 import java.util.List;
-
 import ru.invest.display.entity.BaseEntity;
-import ru.invest.display.entity.User;
 
 import java.io.Serializable;
 
 @RequiredArgsConstructor
+@Getter
 public abstract class BaseRepository<K extends Serializable, E extends BaseEntity<K>> implements Repository<K, E> {
 
     private final Class<E> clazz;
@@ -63,7 +60,21 @@ public abstract class BaseRepository<K extends Serializable, E extends BaseEntit
                 .getResultList();
     }
 
-    @Override
+    public Optional<E> findByName(String name) {
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<E> cq = cb.createQuery(clazz);
+        Root<E> root = cq.from(clazz);
+
+        Predicate[] predicates = new Predicate[1];
+        predicates[0] = cb.equal(root.get("name"), name);
+
+        cq.select(root).where(predicates);
+        TypedQuery<E> query = getEntityManager().createQuery(cq);
+
+        return query.getResultStream().findFirst();
+    }
+
+
     public List<E> findByArguments(String name, Map<String, Object> arguments) {
         List<E> result;
 

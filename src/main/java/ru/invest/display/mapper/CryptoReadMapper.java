@@ -14,5 +14,5 @@ public interface CryptoReadMapper extends GeneralMapper<Crypto, CryptoReadDto>{
     @Mapping(source = "source.quantity", target = "product.quantity")
     @Mapping(source = "source.startDate", target = "product.startDate")
     @Mapping(source = "source.user.username", target = "product.user.username")
-    CryptoReadDto map(Share Crypto);
+    CryptoReadDto map(Crypto source);
 }

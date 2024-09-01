@@ -3,10 +3,10 @@ package ru.invest.display.mapper;
 import java.time.LocalDate;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
-import ru.invest.display.dto.BankAccountCreateDto;
+import ru.invest.display.dto.CryptoCreateDto;
 import ru.invest.display.dto.ProductCreateDto;
 import ru.invest.display.dto.UserCreateDto;
-import ru.invest.display.entity.BankAccount;
+import ru.invest.display.entity.Crypto;
 import ru.invest.display.entity.User;
 
 @Generated(
@@ -15,26 +15,25 @@ import ru.invest.display.entity.User;
     comments = "version: 1.6.0, compiler: javac, environment: Java 17.0.12 (Ubuntu)"
 )
 @Component
-public class BankAccountCreateMapperImpl implements BankAccountCreateMapper {
+public class CryptoCreateMapperImpl implements CryptoCreateMapper {
 
     @Override
-    public BankAccount map(BankAccountCreateDto source) {
+    public Crypto map(CryptoCreateDto source) {
         if ( source == null ) {
             return null;
         }
 
-        BankAccount.BankAccountBuilder<?, ?> bankAccount = BankAccount.builder();
+        Crypto.CryptoBuilder<?, ?> crypto = Crypto.builder();
 
-        bankAccount.user( productCreateDtoToUser( source.product() ) );
-        bankAccount.name( sourceProductName( source ) );
-        bankAccount.price( sourceProductPrice( source ) );
-        bankAccount.quantity( sourceProductQuantity( source ) );
-        bankAccount.startDate( sourceProductStartDate( source ) );
-        bankAccount.interest( source.interest() );
-        bankAccount.endDate( source.endDate() );
-        bankAccount.bank( source.bank() );
+        crypto.user( productCreateDtoToUser( source.product() ) );
+        crypto.name( sourceProductName( source ) );
+        crypto.price( sourceProductPrice( source ) );
+        crypto.quantity( sourceProductQuantity( source ) );
+        crypto.startDate( sourceProductStartDate( source ) );
+        crypto.code( source.code() );
+        crypto.broker( source.broker() );
 
-        return bankAccount.build();
+        return crypto.build();
     }
 
     private String productCreateDtoUserUsername(ProductCreateDto productCreateDto) {
@@ -57,32 +56,32 @@ public class BankAccountCreateMapperImpl implements BankAccountCreateMapper {
         return user.build();
     }
 
-    private String sourceProductName(BankAccountCreateDto bankAccountCreateDto) {
-        ProductCreateDto product = bankAccountCreateDto.product();
+    private String sourceProductName(CryptoCreateDto cryptoCreateDto) {
+        ProductCreateDto product = cryptoCreateDto.product();
         if ( product == null ) {
             return null;
         }
         return product.name();
     }
 
-    private double sourceProductPrice(BankAccountCreateDto bankAccountCreateDto) {
-        ProductCreateDto product = bankAccountCreateDto.product();
+    private double sourceProductPrice(CryptoCreateDto cryptoCreateDto) {
+        ProductCreateDto product = cryptoCreateDto.product();
         if ( product == null ) {
             return 0.0d;
         }
         return product.price();
     }
 
-    private double sourceProductQuantity(BankAccountCreateDto bankAccountCreateDto) {
-        ProductCreateDto product = bankAccountCreateDto.product();
+    private double sourceProductQuantity(CryptoCreateDto cryptoCreateDto) {
+        ProductCreateDto product = cryptoCreateDto.product();
         if ( product == null ) {
             return 0.0d;
         }
         return product.quantity();
     }
 
-    private LocalDate sourceProductStartDate(BankAccountCreateDto bankAccountCreateDto) {
-        ProductCreateDto product = bankAccountCreateDto.product();
+    private LocalDate sourceProductStartDate(CryptoCreateDto cryptoCreateDto) {
+        ProductCreateDto product = cryptoCreateDto.product();
         if ( product == null ) {
             return null;
         }

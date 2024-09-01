@@ -8,25 +8,25 @@ import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ru.invest.display.entity.Share;
+import ru.invest.display.entity.Crypto;
 
 import java.util.Optional;
 
 @Repository
-public class ShareRepository extends ProductRepository<Long, Share> {
-    public ShareRepository(@Autowired EntityManager entityManager) {
-        super(Share.class, entityManager);
+public class CryptoRepository extends ProductRepository<Long, Crypto> {
+    public CryptoRepository(@Autowired EntityManager entityManager) {
+        super(Crypto.class, entityManager);
     }
-    public Optional<Share> findByCode(String code) {
+    public Optional<Crypto> findByCode(String code) {
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
-        CriteriaQuery<Share> cq = cb.createQuery(Share.class);
-        Root<Share> root = cq.from(Share.class);
+        CriteriaQuery<Crypto> cq = cb.createQuery(Crypto.class);
+        Root<Crypto> root = cq.from(Crypto.class);
 
         Predicate[] predicates = new Predicate[1];
         predicates[0] = cb.equal(root.get("code"), code);
 
         cq.select(root).where(predicates);
-        TypedQuery<Share> query = getEntityManager().createQuery(cq);
+        TypedQuery<Crypto> query = getEntityManager().createQuery(cq);
 
         return query.getResultStream().findFirst();
     }

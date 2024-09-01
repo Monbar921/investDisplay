@@ -2,6 +2,7 @@
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/entity/BankAccount.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/config/HibernateConfiguration.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/entity/Share.java
+/home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/service/ProductService.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/config/ServiceConfiguration.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/dto/ShareReadDto.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/mapper/ShareReadMapper.java
@@ -10,8 +11,12 @@
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/mapper/GeneralMapper.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/dto/BankAccountReadDto.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/entity/Product.java
+/home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/mapper/CryptoReadMapper.java
+/home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/dto/CryptoReadDto.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/dao/BankAccountRepository.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/dao/UserRepository.java
+/home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/mapper/CryptoCreateMapper.java
+/home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/dto/CryptoCreateDto.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/mapper/UserCreateMapper.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/dto/ProductReadDto.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/interceptor/TransactionInterceptor.java
@@ -25,6 +30,7 @@
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/dao/ShareRepository.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/App.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/mapper/BankAccountCreateMapper.java
+/home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/entity/Crypto.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/service/UserService.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/mapper/UserReadMapper.java
 /home/denis/projects/InvestDisplay/src/main/java/ru/invest/display/entity/User.java

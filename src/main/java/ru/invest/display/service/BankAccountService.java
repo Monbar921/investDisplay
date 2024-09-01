@@ -15,68 +15,33 @@ import ru.invest.display.mapper.GeneralMapper;
 import java.util.Optional;
 
 @Slf4j
-public class BankAccountService {
-
-    private final BankAccountRepository bankAccountRepository;
+public class BankAccountService extends ProductService<Long, BankAccount>{
     private final GeneralMapper<BankAccountCreateDto, BankAccount> accountCreateMapper;
-    private final UserService userService;
 
     public BankAccountService(@Autowired BankAccountRepository bankAccountRepository, @Autowired UserService userService
                               ,@Autowired GeneralMapper<BankAccountCreateDto, BankAccount> accountCreateMapper) {
-        this.bankAccountRepository = bankAccountRepository;
+        super.setRepository(bankAccountRepository);
+        super.setUserService(userService);
         this.accountCreateMapper = accountCreateMapper;
-        this.userService = userService;
     }
 
     @Transactional
     public Long create(BankAccountCreateDto accountCreateDto) {
-        Long shareId = null;
         // validation
         var entity = accountCreateMapper.map(accountCreateDto);
-
-        Optional<User> opUser = userService.findByUsername(entity.getUser().getUsername());
-
-        if (opUser.isPresent()){
-            entity.getUser().setId(opUser.get().getId());
-            opUser = userService.merge(entity.getUser());
-
-            if (opUser.isPresent()){
-                entity.setUser(opUser.get());
-
-                shareId = bankAccountRepository.save(entity).getId();
-            }
-        }
-
-        return shareId;
+        return super.create(entity);
     }
 
-    @Transactional
-    public Optional<BankAccount> findById(Long id) {
-        return bankAccountRepository.findById(id);
-    }
 
     @Transactional
     public <T> Optional<T> findById(Long id, GeneralMapper<BankAccount, T> bankAccountMapper) {
-        return bankAccountRepository.findById(id)
+        return getRepository().findById(id)
                 .map(bankAccountMapper::map);
     }
-
-    @Transactional
-    public Optional<BankAccount> findByName(String name) {
-        return bankAccountRepository.findByName(name);
-    }
-
     @Transactional
     public <T> Optional<T> findByName(String name, GeneralMapper<BankAccount, T> bankAccountMapper) {
-        return bankAccountRepository.findByName(name)
+        return getRepository().findByName(name)
                 .map(bankAccountMapper::map);
-    }
-
-    @Transactional
-    public boolean delete(Long id) {
-        var opEntity = bankAccountRepository.findById(id);
-        opEntity.ifPresent(entity -> bankAccountRepository.delete(entity.getId()));
-        return opEntity.isPresent();
     }
 
 }

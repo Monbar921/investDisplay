@@ -15,6 +15,28 @@ create table if not exists share (
                                      foreign key (id) references product(id)
 )
 
+create table if not exists crypto (
+                                     id bigserial primary key ,
+                                     code varchar(128) not null,
+                                     broker varchar(32) not null,
+                                     foreign key (id) references product(id)
+)
+
+create table if not exists house (
+                                      id bigserial primary key ,
+                                      is_commercial bool not null,
+                                      rent numeric,
+                                      foreign key (id) references product(id)
+)
+
+create table if not exists refill (
+                                      id bigserial primary key ,
+                                      amount numeric not null,
+                                      date date not null,
+                                      product_id bigserial not null ,
+                                      foreign key (product_id) references product(id)
+)
+
 create table if not exists product (
                                        id bigserial primary key ,
                                        name varchar(128) not null,
@@ -26,4 +48,5 @@ create table if not exists product (
 )
 
 
+drop table refill
 alter table product alter column type TYPE varchar(15);
