@@ -40,11 +40,13 @@ create table if not exists refill (
 create table if not exists product (
                                        id bigserial primary key ,
                                        name varchar(128) not null,
-                                       price numeric not null,
+                                       buy_price numeric not null,
+                                       current_price numeric not null,
                                        quantity numeric not null,
                                        start_date date not null ,
                                        type varchar(10) not null,
-                                       user_id bigserial references users(id)
+                                       user_id bigserial references users(id),
+                                       refill_id bigserial references refill(id)
 )
 
 

@@ -11,7 +11,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class ProductReadDto {
     private String name;
-    private double price;
+    private double buyPrice;
+    private double currentPrice;
     private double quantity;
     private LocalDate startDate;
     private UserReadDto user;

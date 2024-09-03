@@ -1,13 +1,14 @@
 package ru.invest.display.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -16,7 +17,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @DiscriminatorValue(value = "crypto")
-public class Crypto extends Product<Long>{
+public class Crypto extends Product<Long> implements Refillable {
     @Column(nullable = false)
     private String code;
     @Column(nullable = false)

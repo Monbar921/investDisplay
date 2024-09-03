@@ -10,9 +10,9 @@ import ru.invest.display.entity.User;
 
 @Mapper(componentModel = "spring")
 public interface ShareCreateMapper extends GeneralMapper<ShareCreateDto, Share>{
-//    @Mapping(source = "source.broker", target = "broker")
     @Mapping(source = "source.product.name", target = "name")
-    @Mapping(source = "source.product.price", target = "price")
+    @Mapping(source = "source.product.buyPrice", target = "buyPrice")
+    @Mapping(source = "source.product.currentPrice", target = "buyPrice")
     @Mapping(source = "source.product.quantity", target = "quantity")
     @Mapping(source = "source.product.startDate", target = "startDate")
     @Mapping(source = "source.product.user.username", target = "user.username")

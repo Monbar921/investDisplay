@@ -6,13 +6,11 @@ import lombok.Setter;
 import ru.invest.display.dao.BaseRepository;
 import ru.invest.display.dao.Repository;
 import ru.invest.display.dto.BankAccountCreateDto;
-import ru.invest.display.entity.BankAccount;
-import ru.invest.display.entity.BaseEntity;
-import ru.invest.display.entity.Product;
-import ru.invest.display.entity.User;
+import ru.invest.display.entity.*;
 import ru.invest.display.mapper.GeneralMapper;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Setter
@@ -50,5 +48,12 @@ public abstract class ProductService <K extends Serializable, T extends Product<
         var opEntity = repository.findById(id);
         opEntity.ifPresent(entity -> repository.delete(entity.getId()));
         return opEntity.isPresent();
+    }
+
+    @Transactional
+    public boolean addRefill(double amount, LocalDate date, T product) {
+        refills.add(new Refill<T>(amount, date, this));
+
+        return true;
     }
 }

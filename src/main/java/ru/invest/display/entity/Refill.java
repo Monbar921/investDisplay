@@ -10,6 +10,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @EqualsAndHashCode(callSuper = true)
@@ -18,12 +19,12 @@ import java.time.LocalDate;
 @SuperBuilder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class Refill extends BaseEntity<Long>{
+public class Refill <T extends Serializable> extends BaseEntity<T>{
     @Column(nullable = false)
     private double amount;
     @Column(nullable = false)
     private LocalDate date;
     @Column(nullable = false)
     @ManyToOne
-    private Product<Long> product;
+    private Product<T> product;
 }
