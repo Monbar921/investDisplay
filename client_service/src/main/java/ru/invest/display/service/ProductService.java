@@ -4,10 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.Getter;
 import lombok.Setter;
 import ru.invest.display.dao.BaseRepository;
-import ru.invest.display.dao.Repository;
-import ru.invest.display.dto.BankAccountCreateDto;
 import ru.invest.display.entity.*;
-import ru.invest.display.mapper.GeneralMapper;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -33,6 +30,8 @@ public abstract class ProductService <K extends Serializable, T extends Product<
 
                 shareId = (Long) repository.save(entity).getId();
             }
+        } else {
+            throw new IllegalArgumentException("User not found");
         }
 
         return shareId;

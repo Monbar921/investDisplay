@@ -3,43 +3,40 @@ package ru.invest.display.service;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.invest.display.dao.BankAccountRepository;
-import ru.invest.display.dao.HouseRepository;
-import ru.invest.display.dto.BankAccountCreateDto;
-import ru.invest.display.dto.HouseCreateDto;
-import ru.invest.display.entity.BankAccount;
-import ru.invest.display.entity.House;
+import ru.invest.display.dao.RealtyRepository;
+import ru.invest.display.dto.RealtyCreateDto;
+import ru.invest.display.entity.Realty;
 import ru.invest.display.mapper.GeneralMapper;
 
 import java.util.Optional;
 
 @Slf4j
-public class HouseService extends ProductService<Long, House>{
-    private final GeneralMapper<HouseCreateDto, House> houseCreateMapper;
+public class HouseService extends ProductService<Long, Realty>{
+    private final GeneralMapper<RealtyCreateDto, Realty> houseCreateMapper;
 
-    public HouseService(@Autowired HouseRepository houseRepository, @Autowired UserService userService
-                              , @Autowired GeneralMapper<HouseCreateDto, House> houseCreateMapper) {
-        super.setRepository(houseRepository);
+    public HouseService(@Autowired RealtyRepository realtyRepository, @Autowired UserService userService
+                              , @Autowired GeneralMapper<RealtyCreateDto, Realty> houseCreateMapper) {
+        super.setRepository(realtyRepository);
         super.setUserService(userService);
         this.houseCreateMapper = houseCreateMapper;
     }
 
     @Transactional
-    public Long create(HouseCreateDto houseCreateDto) {
+    public Long create(RealtyCreateDto realtyCreateDto) {
         // validation
-        var entity = houseCreateMapper.map(houseCreateDto);
+        var entity = houseCreateMapper.map(realtyCreateDto);
         return super.create(entity);
     }
 
 
     @Transactional
-    public <T> Optional<T> findById(Long id, GeneralMapper<House, T> houseMapper) {
+    public <T> Optional<T> findById(Long id, GeneralMapper<Realty, T> houseMapper) {
         return super.getRepository().findById(id)
                 .map(houseMapper::map);
     }
 
     @Transactional
-    public <T> Optional<T> findByName(String name, GeneralMapper<House, T> houseMapper) {
+    public <T> Optional<T> findByName(String name, GeneralMapper<Realty, T> houseMapper) {
         return super.getRepository().findByName(name)
                 .map(houseMapper::map);
     }

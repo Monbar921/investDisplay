@@ -12,7 +12,7 @@ import ru.invest.display.dto.ResponseTokenDTO;
 
 @RestController
 @RequestMapping("/api")
-public class MainController {
+public class PriceController {
     @Value("${ru.share.price.handler.url}")
     private String ruShareHandlerUrl;
     @Value("${en.share.price.handler.url}")

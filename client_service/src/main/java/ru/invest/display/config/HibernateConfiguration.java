@@ -38,7 +38,7 @@ public class HibernateConfiguration {
         configuration.addAnnotatedClass(Product.class);
         configuration.addAnnotatedClass(User.class);
         configuration.addAnnotatedClass(BankAccount.class);
-        configuration.addAnnotatedClass(House.class);
+        configuration.addAnnotatedClass(Realty.class);
         configuration.addAnnotatedClass(Crypto.class);
 
         return configuration;

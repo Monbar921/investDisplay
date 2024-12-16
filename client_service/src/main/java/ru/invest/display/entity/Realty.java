@@ -9,7 +9,6 @@ import lombok.experimental.SuperBuilder;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Slf4j
 @EqualsAndHashCode(callSuper = true)
@@ -19,7 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @DiscriminatorValue(value = "house")
-public class House extends Product<Long> {
+public class Realty extends Product<Long> {
     @Column(nullable = false)
     private boolean isCommercial;
     private double rent;

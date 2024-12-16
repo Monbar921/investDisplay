@@ -2,7 +2,6 @@ package ru.invest.display.interceptor;
 
 
 import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
 import net.bytebuddy.implementation.bind.annotation.Origin;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
 import net.bytebuddy.implementation.bind.annotation.SuperCall;
@@ -29,13 +28,9 @@ public class TransactionInterceptor {
         Transaction transaction = null;
         boolean transactionStarted = false;
         if (method.isAnnotationPresent(Transactional.class)) {
-            System.out.println("found Transactional");
             transaction = sessionFactory.getCurrentSession().getTransaction();
 
-            System.out.println("tr transaction "+ transaction);
-            System.out.println("tr alive "+ transaction.isActive());
             if (!transaction.isActive()) {
-                System.out.println("Transactional alive");
                 transaction.begin();
                 transactionStarted = true;
             }
