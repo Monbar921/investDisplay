@@ -52,7 +52,7 @@ public abstract class ProductService <K extends Serializable, T extends Product<
 
     @Transactional
     public boolean addRefill(double amount, LocalDate date, T product) {
-        refills.add(new Refill<T>(amount, date, this));
+//        refills.add(new Refill<T>(amount, date, this));
 
         return true;
     }

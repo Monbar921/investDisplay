@@ -17,22 +17,23 @@ import java.util.Optional;
 
 @Repository
 @Slf4j
-public class RefillRepository extends BaseRepository<Long, Refill> {
-    public RefillRepository(@Autowired EntityManager entityManager) {
-        super(Refill.class, entityManager);
-    }
-
-    public Optional<Refill> findByProductId(Long productId) {
-        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
-        CriteriaQuery<Refill> cq = cb.createQuery(Refill.class);
-        Root<Refill> root = cq.from(Refill.class);
-
-        Predicate[] predicates = new Predicate[1];
-        predicates[0] = cb.equal(root.get("product_id"), productId);
-
-        cq.select(root).where(predicates);
-        TypedQuery<Refill> query = getEntityManager().createQuery(cq);
-
-        return query.getResultStream().findFirst();
-    }
+public class RefillRepository{
+//public class RefillRepository extends BaseRepository<Long, Refill> {
+//    public RefillRepository(@Autowired EntityManager entityManager) {
+//        super(Refill.class, entityManager);
+//    }
+//
+//    public Optional<Refill> findByProductId(Long productId) {
+//        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+//        CriteriaQuery<Refill> cq = cb.createQuery(Refill.class);
+//        Root<Refill> root = cq.from(Refill.class);
+//
+//        Predicate[] predicates = new Predicate[1];
+//        predicates[0] = cb.equal(root.get("product_id"), productId);
+//
+//        cq.select(root).where(predicates);
+//        TypedQuery<Refill> query = getEntityManager().createQuery(cq);
+//
+//        return query.getResultStream().findFirst();
+//    }
 }

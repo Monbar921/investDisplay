@@ -30,13 +30,13 @@ public class Product<T extends Serializable> extends BaseEntity<T> implements Re
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "refill_id")
-    private List<Refill<T>> refills;
+//    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "refill_id")
+//    private List<Refill<T>> refills;
 
     @Override
     public boolean addRefill(double amount, LocalDate date) {
-        refills.add(new Refill<T>(amount, date, this));
+//        refills.add(new Refill<T>(amount, date, this));
 
         return true;
     }
