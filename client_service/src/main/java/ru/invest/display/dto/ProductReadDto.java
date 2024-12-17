@@ -15,5 +15,4 @@ public class ProductReadDto {
     private double currentPrice;
     private double quantity;
     private LocalDate startDate;
-    private UserReadDto user;
 }

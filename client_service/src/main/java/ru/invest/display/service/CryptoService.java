@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ru.invest.display.dao.CryptoRepository;
 import ru.invest.display.dto.CryptoCreateDto;
 import ru.invest.display.entity.Crypto;
+import ru.invest.display.entity.User;
 import ru.invest.display.mapper.GeneralMapper;
 
 import java.util.Optional;
@@ -22,10 +23,10 @@ public class CryptoService extends ProductService<Long, Crypto>{
     }
 
     @Transactional
-    public Long create(CryptoCreateDto CryptoDto) {
+    public Long create(CryptoCreateDto CryptoDto, User user) {
         // validation
         var entity = CryptoCreateMapper.map(CryptoDto);
-        return super.create(entity);
+        return super.create(entity, user);
     }
 
     @Transactional

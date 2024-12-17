@@ -3,6 +3,7 @@ package ru.invest.display.service;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import ru.invest.display.dao.UserRepository;
 import ru.invest.display.dto.UserCreateDto;
 import ru.invest.display.entity.BankAccount;
@@ -51,6 +52,12 @@ public class UserService {
     }
 
     @Transactional
+    public Optional<User> findByUserDetails(UserDetails user) {
+        validateUserDetails(user);
+        return userRepository.findByUsername(user.getUsername());
+    }
+
+    @Transactional
     public <T> Optional<T> findByUsername(String username, GeneralMapper<User, T> userMapper) {
         return userRepository.findByUsername(username)
                 .map(userMapper::map);
@@ -61,5 +68,20 @@ public class UserService {
         var opEntity = userRepository.findById(id);
         opEntity.ifPresent(entity -> userRepository.delete(entity.getId()));
         return opEntity.isPresent();
+    }
+
+    public void validateUser(User user) {
+        if (user == null) {
+            throw new IllegalArgumentException("User is not provided");
+        }
+        if (user.getUsername() == null) {
+            throw new IllegalArgumentException("Username is not provided");
+        }
+    }
+
+    public void validateUserDetails(UserDetails user) {
+        if (user == null || user.getUsername() == null) {
+            throw new IllegalArgumentException("User is not found in session");
+        }
     }
 }

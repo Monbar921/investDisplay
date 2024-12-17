@@ -11,6 +11,5 @@ public interface RealtyCreateMapper extends GeneralMapper<RealtyCreateDto, Realt
     @Mapping(source = "source.product.buyPrice", target = "buyPrice")
     @Mapping(source = "source.product.quantity", target = "quantity")
     @Mapping(source = "source.product.startDate", target = "startDate")
-    @Mapping(source = "source.product.user.username", target = "user.username")
     Realty map(RealtyCreateDto source);
 }

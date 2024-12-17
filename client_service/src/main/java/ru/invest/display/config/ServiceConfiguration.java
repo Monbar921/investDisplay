@@ -76,12 +76,12 @@ public class ServiceConfiguration {
                 .newInstance(repository, userService, mapper);
     }
 
-
     @Bean
     public BankAccountService bankAccountService(@Autowired TransactionInterceptor transactionInterceptor
             , @Autowired BankAccountRepository repository
             , @Autowired UserService userService
-            , @Autowired GeneralMapper<BankAccountCreateDto, BankAccount> mapper)
+            , @Autowired GeneralMapper<BankAccountCreateDto, BankAccount> mapper
+            , @Autowired GeneralMapper<BankAccount, BankAccountReadDto> accountReadMapper)
             throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         return new ByteBuddy()
                 .subclass(BankAccountService.class)
@@ -90,7 +90,7 @@ public class ServiceConfiguration {
                 .make()
                 .load(BankAccountService.class.getClassLoader())
                 .getLoaded()
-                .getDeclaredConstructor(BankAccountRepository.class, UserService.class, GeneralMapper.class)
-                .newInstance(repository, userService, mapper);
+                .getDeclaredConstructor(BankAccountRepository.class, UserService.class, GeneralMapper.class, GeneralMapper.class)
+                .newInstance(repository, userService, mapper, accountReadMapper);
     }
 }

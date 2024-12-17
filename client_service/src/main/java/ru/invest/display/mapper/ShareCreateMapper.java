@@ -14,6 +14,5 @@ public interface ShareCreateMapper extends GeneralMapper<ShareCreateDto, Share>{
     @Mapping(source = "source.product.buyPrice", target = "buyPrice")
     @Mapping(source = "source.product.quantity", target = "quantity")
     @Mapping(source = "source.product.startDate", target = "startDate")
-    @Mapping(source = "source.product.user.username", target = "user.username")
     Share map(ShareCreateDto source);
 }

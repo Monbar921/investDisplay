@@ -12,29 +12,17 @@ import java.util.Optional;
 
 @Setter
 @Getter
-public abstract class ProductService <K extends Serializable, T extends Product<K>> {
+public abstract class ProductService<K extends Serializable, T extends Product<K>> {
     private UserService userService;
     private BaseRepository<K, T> repository;
 
     @Transactional
-    public Long create(T entity) {
-        Long shareId = null;
-        Optional<User> opUser = userService.findByUsername(entity.getUser().getUsername());
+    public Long create(T entity, User user) {
+        userService.validateUser(user);
+        User managedUser = userService.merge(user).orElseThrow();
+        entity.setUser(managedUser);
 
-        if (opUser.isPresent()){
-            entity.getUser().setId(opUser.get().getId());
-            opUser = userService.merge(entity.getUser());
-
-            if (opUser.isPresent()){
-                entity.setUser(opUser.get());
-
-                shareId = (Long) repository.save(entity).getId();
-            }
-        } else {
-            throw new IllegalArgumentException("User not found");
-        }
-
-        return shareId;
+        return (Long) repository.save(entity).getId();
     }
 
     @Transactional

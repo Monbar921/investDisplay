@@ -13,6 +13,5 @@ public interface BankAccountCreateMapper extends GeneralMapper<BankAccountCreate
     @Mapping(source = "source.product.buyPrice", target = "buyPrice")
     @Mapping(source = "source.product.quantity", target = "quantity")
     @Mapping(source = "source.product.startDate", target = "startDate")
-    @Mapping(source = "source.product.user.username", target = "user.username")
     BankAccount map(BankAccountCreateDto source);
 }

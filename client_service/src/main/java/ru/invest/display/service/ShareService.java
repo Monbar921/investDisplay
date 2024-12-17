@@ -26,10 +26,10 @@ public class ShareService extends ProductService<Long, Share>{
     }
 
     @Transactional
-    public Long create(ShareCreateDto shareDto) {
+    public Long create(ShareCreateDto shareDto, User user) {
         // validation
         var entity = shareCreateMapper.map(shareDto);
-        return super.create(entity);
+        return super.create(entity, user);
     }
 
     @Transactional

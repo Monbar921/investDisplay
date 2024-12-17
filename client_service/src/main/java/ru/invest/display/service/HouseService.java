@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ru.invest.display.dao.RealtyRepository;
 import ru.invest.display.dto.RealtyCreateDto;
 import ru.invest.display.entity.Realty;
+import ru.invest.display.entity.User;
 import ru.invest.display.mapper.GeneralMapper;
 
 import java.util.Optional;
@@ -22,10 +23,10 @@ public class HouseService extends ProductService<Long, Realty>{
     }
 
     @Transactional
-    public Long create(RealtyCreateDto realtyCreateDto) {
+    public Long create(RealtyCreateDto realtyCreateDto, User user) {
         // validation
         var entity = houseCreateMapper.map(realtyCreateDto);
-        return super.create(entity);
+        return super.create(entity, user);
     }
 
 
