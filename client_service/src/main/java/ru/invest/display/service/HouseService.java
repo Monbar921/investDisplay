@@ -3,6 +3,7 @@ package ru.invest.display.service;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.invest.display.dao.RealtyRepository;
 import ru.invest.display.dto.RealtyCreateDto;
 import ru.invest.display.entity.Realty;
@@ -12,7 +13,8 @@ import ru.invest.display.mapper.GeneralMapper;
 import java.util.Optional;
 
 @Slf4j
-public class HouseService extends ProductService<Long, Realty>{
+@Service
+public class HouseService extends ProductService<Realty>{
     private final GeneralMapper<RealtyCreateDto, Realty> houseCreateMapper;
 
     public HouseService(@Autowired RealtyRepository realtyRepository, @Autowired UserService userService

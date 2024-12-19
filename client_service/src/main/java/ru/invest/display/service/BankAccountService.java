@@ -3,6 +3,7 @@ package ru.invest.display.service;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.invest.display.dao.BankAccountRepository;
 import ru.invest.display.dto.BankAccountCreateDto;
 import ru.invest.display.dto.BankAccountReadDto;
@@ -17,7 +18,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Slf4j
-public class BankAccountService extends ProductService<Long, BankAccount> {
+@Service
+public class BankAccountService extends ProductService<BankAccount> {
     private final GeneralMapper<BankAccountCreateDto, BankAccount> accountCreateMapper;
     private final GeneralMapper<BankAccount, BankAccountReadDto> accountReadMapper;
 
@@ -59,7 +61,6 @@ public class BankAccountService extends ProductService<Long, BankAccount> {
 
     @Transactional
     public List<BankAccountReadDto> findBankAccount(String bank, String accountName, User user) {
-        List<BankAccountReadDto> result = new ArrayList<>();
         if (bank == null) {
             throw new IllegalArgumentException("Bank is not provided");
         }
@@ -68,11 +69,7 @@ public class BankAccountService extends ProductService<Long, BankAccount> {
         }
         super.getUserService().validateUser(user);
 
-        var opBankAccountReadDto = findByBankAndNameAndUserId(bank, accountName, user.getId());
-
-        opBankAccountReadDto.ifPresent(result::add);
-
-        return result;
+        return findByBankAndNameAndUserId(bank, accountName, user);
     }
 
 
@@ -89,8 +86,8 @@ public class BankAccountService extends ProductService<Long, BankAccount> {
     }
 
     @Transactional
-    public Optional<BankAccountReadDto> findByBankAndNameAndUserId(String bank, String name, Long userId) {
-        return ((BankAccountRepository)getRepository()).findByBankAndNameAndUserId(bank, name, userId)
-                .map(accountReadMapper::map);
+    public List<BankAccountReadDto> findByBankAndNameAndUserId(String bank, String name, User user) {
+        return ((BankAccountRepository)getRepository()).findByBankAndNameAndUserId(bank, name, user)
+                .stream().map(accountReadMapper::map).toList();
     }
 }

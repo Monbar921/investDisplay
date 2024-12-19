@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @DiscriminatorValue(value = "bank_account")
-public class BankAccount extends Product<Long>{
+public class BankAccount extends Product{
     @Column(nullable = false)
     private double interest;
     private LocalDate endDate;

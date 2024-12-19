@@ -4,22 +4,28 @@ import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 import ru.invest.display.dao.UserRepository;
 import ru.invest.display.dto.UserCreateDto;
 import ru.invest.display.entity.BankAccount;
 import ru.invest.display.entity.User;
 import ru.invest.display.mapper.GeneralMapper;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Slf4j
+@Service
 public class UserService {
+    private Map<String, Boolean> authorizedUsers;
+
     private final UserRepository userRepository;
     private final GeneralMapper<UserCreateDto, User> userCreateMapper;
 
     public UserService(@Autowired UserRepository userRepository, @Autowired GeneralMapper<UserCreateDto, User> userCreateMapper) {
         this.userRepository = userRepository;
         this.userCreateMapper = userCreateMapper;
+        this.authorizedUsers = Map.of("admin", true, "denkor", true);
     }
 
     @Transactional
@@ -77,6 +83,24 @@ public class UserService {
         if (user.getUsername() == null) {
             throw new IllegalArgumentException("Username is not provided");
         }
+    }
+
+    public boolean isUserAuthorized(UserDetails user){
+        if (user != null && user.getUsername() != null) {
+            Boolean auth = authorizedUsers.get(user.getUsername());
+            return auth != null && auth;
+        }
+
+        return false;
+    }
+
+    public boolean isUserAuthorized(User user){
+        if (user != null && user.getUsername() != null) {
+            Boolean auth = authorizedUsers.get(user.getUsername());
+            return auth != null && auth;
+        }
+
+        return false;
     }
 
     public void validateUserDetails(UserDetails user) {

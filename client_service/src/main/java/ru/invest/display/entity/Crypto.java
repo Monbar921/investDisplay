@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @DiscriminatorValue(value = "crypto")
-public class Crypto extends Product<Long> implements Refillable {
+public class Crypto extends Product{
     @Column(nullable = false)
     private String code;
     @Column(nullable = false)

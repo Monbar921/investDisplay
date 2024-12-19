@@ -18,20 +18,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @DiscriminatorValue(value = "house")
-public class Realty extends Product<Long> {
+public class Realty extends Product {
     @Column(nullable = false)
     private boolean isCommercial;
     private double rent;
-
-    @Override
-    public boolean addRefill(double amount, LocalDate date) {
-        if (isCommercial) {
-            super.addRefill(amount, date);
-
-            return true;
-        } else {
-            log.info("Trying to add refill to noncommercial house");
-            return false;
-        }
-    }
 }

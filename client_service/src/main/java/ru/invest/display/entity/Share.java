@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @DiscriminatorValue(value = "share")
-public class Share extends Product<Long>{
+public class Share extends Product{
     @Column(nullable = false)
     private String code;
     @Column(nullable = false)

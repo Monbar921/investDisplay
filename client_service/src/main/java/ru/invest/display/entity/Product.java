@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "type")
-public class Product<T extends Serializable> extends BaseEntity<T> implements Refillable{
+public class Product extends BaseEntity<Long>{
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
@@ -34,10 +34,4 @@ public class Product<T extends Serializable> extends BaseEntity<T> implements Re
 //    @JoinColumn(name = "refill_id")
 //    private List<Refill<T>> refills;
 
-    @Override
-    public boolean addRefill(double amount, LocalDate date) {
-//        refills.add(new Refill<T>(amount, date, this));
-
-        return true;
-    }
 }

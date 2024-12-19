@@ -13,5 +13,5 @@ import java.time.LocalDate;
 public class RefillReadDto {
     private double amount;
     private LocalDate date;
-    private Product<Long> product;
+    private Product product;
 }

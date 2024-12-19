@@ -3,6 +3,7 @@ package ru.invest.display.service;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.invest.display.dao.CryptoRepository;
 import ru.invest.display.dto.CryptoCreateDto;
 import ru.invest.display.entity.Crypto;
@@ -12,7 +13,8 @@ import ru.invest.display.mapper.GeneralMapper;
 import java.util.Optional;
 
 @Slf4j
-public class CryptoService extends ProductService<Long, Crypto>{
+@Service
+public class CryptoService extends ProductService<Crypto>{
     private final GeneralMapper<CryptoCreateDto, Crypto> CryptoCreateMapper;
 
     public CryptoService(@Autowired CryptoRepository CryptoRepository, @Autowired UserService userService

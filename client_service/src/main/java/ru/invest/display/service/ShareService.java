@@ -3,6 +3,7 @@ package ru.invest.display.service;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.invest.display.dao.ShareRepository;
 import ru.invest.display.dao.UserRepository;
 import ru.invest.display.dto.ShareCreateDto;
@@ -15,7 +16,8 @@ import ru.invest.display.mapper.GeneralMapper;
 import java.util.Optional;
 
 @Slf4j
-public class ShareService extends ProductService<Long, Share>{
+@Service
+public class ShareService extends ProductService< Share>{
     private final GeneralMapper<ShareCreateDto, Share> shareCreateMapper;
 
     public ShareService(@Autowired ShareRepository shareRepository, @Autowired UserService userService

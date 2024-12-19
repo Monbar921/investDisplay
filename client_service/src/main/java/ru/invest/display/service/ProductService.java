@@ -3,6 +3,7 @@ package ru.invest.display.service;
 import jakarta.transaction.Transactional;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.stereotype.Service;
 import ru.invest.display.dao.BaseRepository;
 import ru.invest.display.entity.*;
 
@@ -12,9 +13,10 @@ import java.util.Optional;
 
 @Setter
 @Getter
-public abstract class ProductService<K extends Serializable, T extends Product<K>> {
+@Service
+public abstract class ProductService<T extends Product> {
     private UserService userService;
-    private BaseRepository<K, T> repository;
+    private BaseRepository<Long, T> repository;
 
     @Transactional
     public Long create(T entity, User user) {
@@ -26,12 +28,12 @@ public abstract class ProductService<K extends Serializable, T extends Product<K
     }
 
     @Transactional
-    public Optional<T> findById(K id) {
+    public Optional<T> findById(Long id) {
         return repository.findById(id);
     }
 
     @Transactional
-    public boolean delete(K id) {
+    public boolean delete(Long id) {
         var opEntity = repository.findById(id);
         opEntity.ifPresent(entity -> repository.delete(entity.getId()));
         return opEntity.isPresent();
