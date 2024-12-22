@@ -9,11 +9,9 @@ import ru.invest.display.dto.BankAccountCreateDto;
 import ru.invest.display.dto.BankAccountReadDto;
 import ru.invest.display.entity.BankAccount;
 import ru.invest.display.entity.User;
-import ru.invest.display.mapper.BankAccountCreateMapper;
 import ru.invest.display.mapper.GeneralMapper;
 import ru.invest.display.utils.DtoValidator;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +19,8 @@ import java.util.Optional;
 @Service
 public class BankAccountService extends ProductService<BankAccount> {
     private final GeneralMapper<BankAccountCreateDto, BankAccount> accountCreateMapper;
-    private final GeneralMapper<BankAccount, BankAccountReadDto> accountReadMapper;
+    private final GeneralMapper<BankAccount, BankAccountReadDto> accountReadMapper;;
+
 
     public BankAccountService(@Autowired BankAccountRepository bankAccountRepository, @Autowired UserService userService
             , @Autowired GeneralMapper<BankAccountCreateDto, BankAccount> accountCreateMapper,
@@ -42,13 +41,12 @@ public class BankAccountService extends ProductService<BankAccount> {
         }
     }
 
-    private void validateReadDto(BankAccountReadDto accountReadDto) {
-        if (accountReadDto == null) {
-            throw new IllegalArgumentException("Read dto is not provided");
-        }
-        DtoValidator.validateReadProductDto(accountReadDto.getProduct());
-        if (accountReadDto.getBank() == null) {
+    private void validateReadDto(String bank, String accountName) {
+        if (bank.isEmpty() || bank.isBlank()) {
             throw new IllegalArgumentException("Bank is not provided");
+        }
+        if (accountName.isEmpty() || accountName.isBlank()) {
+            throw new IllegalArgumentException("AccountName is not provided");
         }
     }
 
@@ -61,14 +59,7 @@ public class BankAccountService extends ProductService<BankAccount> {
 
     @Transactional
     public List<BankAccountReadDto> findBankAccount(String bank, String accountName, User user) {
-        if (bank == null) {
-            throw new IllegalArgumentException("Bank is not provided");
-        }
-        if (accountName == null) {
-            throw new IllegalArgumentException("AccountName is not provided");
-        }
-        super.getUserService().validateUser(user);
-
+        validateReadDto(bank, accountName);
         return findByBankAndNameAndUserId(bank, accountName, user);
     }
 

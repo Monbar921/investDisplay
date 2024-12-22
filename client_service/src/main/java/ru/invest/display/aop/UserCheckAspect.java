@@ -19,7 +19,8 @@ public class UserCheckAspect {
     }
 
     // Define a pointcut to match the methods you want to intercept
-    @Pointcut("execution(* ru.invest.display.service.BankAccountService.*(..))") // Replace with your package
+    @Pointcut("execution(* ru.invest.display.service.BankAccountService.findBankAccount(..))|| " +
+              "execution(* ru.invest.display.service.BankAccountService.create(..))")
     public void methodsToIntercept() {
     }
 
@@ -27,13 +28,12 @@ public class UserCheckAspect {
     public void checkUserBeforeMethodExecution(JoinPoint joinPoint) {
         // Extract the method arguments
         Object[] args = joinPoint.getArgs();
-
         // Find the User parameter
         for (Object arg : args) {
             if (arg instanceof User user) {
 
                 // Validate the user
-                if (userService.isUserAuthorized(user)) {
+                if (!userService.isUserAuthorized(user)) {
                     throw new SecurityException("User is not authorized");
                 }
 
@@ -42,7 +42,7 @@ public class UserCheckAspect {
             } else if (arg instanceof UserDetails user) {
 
                 // Validate the user
-                if (userService.isUserAuthorized(user)) {
+                if (!userService.isUserAuthorized(user)) {
                     throw new SecurityException("User is not authorized");
                 }
 
