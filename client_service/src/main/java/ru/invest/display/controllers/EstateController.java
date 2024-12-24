@@ -20,7 +20,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class EstateController {
-
     private final BankAccountService bankAccountService;
     private final UserService userService;
 
@@ -30,7 +29,7 @@ public class EstateController {
     }
 
     @PostMapping("/estate/bank_account/post")
-    public ResponseEntity<ResponseEstateDTO<BankAccountReadDto>> postBankAccount(@RequestBody BankAccountCreateDto bankAccountDto/*, @AuthenticationPrincipal UserDetails user*/) {
+    public ResponseEntity<ResponseEstateDTO<BankAccountReadDto>> saveBankAccount(@RequestBody BankAccountCreateDto bankAccountDto/*, @AuthenticationPrincipal UserDetails user*/) {
         int status = 200;
         String errorMessage = "ok";
         UserDetails user = new org.springframework.security.core.userdetails.User(

@@ -19,8 +19,7 @@ public class UserCheckAspect {
     }
 
     // Define a pointcut to match the methods you want to intercept
-    @Pointcut("execution(* ru.invest.display.service.BankAccountService.findBankAccount(..))|| " +
-              "execution(* ru.invest.display.service.BankAccountService.create(..))")
+    @Pointcut("execution(* ru.invest.display.controllers.*.*(..))")
     public void methodsToIntercept() {
     }
 
@@ -28,6 +27,7 @@ public class UserCheckAspect {
     public void checkUserBeforeMethodExecution(JoinPoint joinPoint) {
         // Extract the method arguments
         Object[] args = joinPoint.getArgs();
+        System.out.println("aspect");
         // Find the User parameter
         for (Object arg : args) {
             if (arg instanceof User user) {

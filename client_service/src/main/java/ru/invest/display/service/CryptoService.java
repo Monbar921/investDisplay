@@ -5,10 +5,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.invest.display.dao.CryptoRepository;
+import ru.invest.display.dto.BankAccountCreateDto;
 import ru.invest.display.dto.CryptoCreateDto;
 import ru.invest.display.entity.Crypto;
 import ru.invest.display.entity.User;
 import ru.invest.display.mapper.GeneralMapper;
+import ru.invest.display.utils.DtoValidator;
 
 import java.util.Optional;
 
@@ -25,9 +27,9 @@ public class CryptoService extends ProductService<Crypto>{
     }
 
     @Transactional
-    public Long create(CryptoCreateDto CryptoDto, User user) {
-        // validation
-        var entity = CryptoCreateMapper.map(CryptoDto);
+    public Long create(CryptoCreateDto createDto, User user) {
+        validateCreateDto(createDto);
+        var entity = CryptoCreateMapper.map(createDto);
         return super.create(entity, user);
     }
 
@@ -52,5 +54,18 @@ public class CryptoService extends ProductService<Crypto>{
     public <T> Optional<T> findByCode(String code, GeneralMapper<Crypto, T> CryptoMapper) {
         return ((CryptoRepository)getRepository()).findByCode(code)
                 .map(CryptoMapper::map);
+    }
+
+    private void validateCreateDto(CryptoCreateDto createDto) {
+        if (createDto == null) {
+            throw new IllegalArgumentException("Create dto is not provided");
+        }
+        DtoValidator.validateCreateProductDto(createDto.product());
+        if (createDto.code() == null) {
+            throw new IllegalArgumentException("Code is not provided");
+        }
+        if (createDto.broker() == null) {
+            throw new IllegalArgumentException("Broker is not provided");
+        }
     }
 }
